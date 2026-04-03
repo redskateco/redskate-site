@@ -66,16 +66,29 @@
     .contact-link {
       color: var(--text);
       text-decoration: none;
-      font-size: 0.95rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s ease, opacity 0.2s ease;
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      background: rgba(0,0,0,0.16);
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
 
     .contact-link:hover {
-      border-color: var(--text);
-      opacity: 0.9;
+      opacity: 0.95;
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .contact-link svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+      fill: currentColor;
     }
 
     .hero {
@@ -150,7 +163,11 @@
   <div class="page">
     <header class="topbar">
       <img class="logo" src="assets/logo.png" alt="Red Skate logo" />
-      <a class="contact-link" href="mailto:contato@redskateshop.com.br">Contact</a>
+      <a class="contact-link" href="https://instagram.com/redskatecompany" target="_blank" rel="noopener noreferrer" aria-label="Instagram @redskatecompany" title="Instagram @redskatecompany">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 6.85A5.15 5.15 0 1 1 6.85 12 5.16 5.16 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 15.35 12 3.35 3.35 0 0 0 12 8.65Z"/>
+        </svg>
+      </a>
     </header>
 
     <main class="hero">
