@@ -157,6 +157,61 @@
         letter-spacing: 0.12em;
       }
     }
+    .custom-cursor,
+    .cursor-trail {
+      position: fixed;
+      left: 0;
+      top: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.18s ease, width 0.18s ease, height 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.08s linear;
+    }
+
+    .custom-cursor.is-visible {
+      opacity: 1;
+    }
+
+    body.cursor-enabled,
+    body.cursor-enabled a,
+    body.cursor-enabled button {
+      cursor: none;
+    }
+
+    .custom-cursor {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ff3b57;
+      box-shadow: 0 0 0 10px rgba(255,59,87,0.18);
+    }
+
+    .custom-cursor.is-hovering {
+      width: 18px;
+      height: 18px;
+      box-shadow: 0 0 0 14px rgba(255,59,87,0.22), 0 0 20px rgba(255,59,87,0.28);
+    }
+
+    @media (max-width: 900px), (pointer: coarse) {
+      .custom-cursor,
+      .cursor-trail {
+        display: none !important;
+      }
+
+      body.cursor-enabled,
+      body.cursor-enabled a,
+      body.cursor-enabled button {
+        cursor: auto;
+      }
+    }
+
+      body.cursor-enabled,
+      body.cursor-enabled a,
+      body.cursor-enabled button {
+        cursor: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -181,5 +236,46 @@
       </div>
     </footer>
   </div>
+  <div class="custom-cursor" aria-hidden="true"></div>
+
+  <script>
+    (() => {
+      const body = document.body;
+      const cursor = document.querySelector('.custom-cursor');
+      const hoverTargets = document.querySelectorAll('a, button');
+      const isDesktop = window.matchMedia('(pointer:fine)').matches && window.innerWidth > 900;
+
+      if (!isDesktop) return;
+
+      body.classList.add('cursor-enabled');
+
+      window.addEventListener('mousemove', (event) => {
+        cursor.classList.add('is-visible');
+        cursor.style.left = event.clientX + 'px';
+        cursor.style.top = event.clientY + 'px';
+      });
+
+      window.addEventListener('mousedown', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(0.9)';
+      });
+
+      window.addEventListener('mouseup', () => {
+        cursor.style.transform = 'translate(-50%, -50%)';
+      });
+
+      document.addEventListener('mouseleave', () => {
+        cursor.classList.remove('is-visible');
+      });
+
+      hoverTargets.forEach((target) => {
+        target.addEventListener('mouseenter', () => {
+          cursor.classList.add('is-hovering');
+        });
+        target.addEventListener('mouseleave', () => {
+          cursor.classList.remove('is-hovering');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
