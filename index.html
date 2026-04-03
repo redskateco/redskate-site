@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red Skate Company</title>
+  <meta name="description" content="Red Skate Company — coming back soon." />
+  <style>
+    :root {
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.78);
+      --line: rgba(255,255,255,0.18);
+      --overlay: rgba(0,0,0,0.38);
+      --overlay-strong: rgba(0,0,0,0.56);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #000;
+    }
+
+    body {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background-image:
+        linear-gradient(to bottom, var(--overlay-strong), rgba(0,0,0,0.18) 28%, rgba(0,0,0,0.18) 72%, var(--overlay-strong)),
+        url('assets/wallpaper.png');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px 34px;
+    }
+
+    .topbar,
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      z-index: 2;
+    }
+
+    .logo {
+      width: clamp(110px, 14vw, 180px);
+      height: auto;
+      display: block;
+    }
+
+    .contact-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .contact-link:hover {
+      border-color: var(--text);
+      opacity: 0.9;
+    }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 16px;
+      z-index: 1;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5.5vw, 5.8rem);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-shadow: 0 6px 24px rgba(0,0,0,0.45);
+    }
+
+    .footer {
+      color: var(--muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-symbols {
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 20px 18px;
+      }
+
+      .topbar,
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        justify-content: flex-end;
+        padding-bottom: 90px;
+      }
+
+      h1 {
+        text-align: left;
+        letter-spacing: 0.12em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <img class="logo" src="assets/logo.png" alt="Red Skate logo" />
+      <a class="contact-link" href="mailto:contato@redskateshop.com.br">Contact</a>
+    </header>
+
+    <main class="hero">
+      <h1>We’ll be back soon</h1>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <span>Red Skate Company</span>
+        <span class="footer-symbols">© ® ™</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
